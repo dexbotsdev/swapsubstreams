@@ -152,11 +152,11 @@ class AuthStreamService {
                 return;
             }
             const apiKey = url.searchParams.get('apiKey');
-            if (!AuthStreamService.API_KEYS.includes(apiKey) && url.hostname !== 'localhost') {
-                socket.write('HTTP/1.1 401 Unauthorized\r\n\r\n');
-                socket.destroy();
-                return;
-            }
+            // if (!AuthStreamService.API_KEYS.includes(apiKey) && url.hostname !== 'localhost') {
+            //     socket.write('HTTP/1.1 401 Unauthorized\r\n\r\n');
+            //     socket.destroy();
+            //     return;
+            // }
             this.wss.handleUpgrade(req, socket, head, (ws) => {
                 this.wss.emit('connection', ws, req);
             });
